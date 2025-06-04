@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEngineer } from "../../features/engineerSlice";
-import ManagerDashboard from "./ManagerDashBoard";
+import ManagerDashboard from "./ManagerDashboard";
 import { fetchAssignment } from "../../features/assignmentSlice";
 import Loading from "../../Component/Loading";
 
