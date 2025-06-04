@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import EngineerDashboard from "./Engineer/EngineerDashboard";
-import ManagerDashboard from "./Manager/ManagerDashBoard";
+import ManagerDashboard from "./Manager/ManagerDashboard";
 import { fetchAssignment } from "../features/assignmentSlice";
 import { useEffect } from "react";
 import { fetchEngineer } from "../features/engineerSlice";
