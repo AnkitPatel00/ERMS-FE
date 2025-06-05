@@ -33,10 +33,10 @@ const CreateAssignment = () => {
       try {
         const token = localStorage.getItem("token");
         const [engineerRes, projectRes] = await Promise.all([
-          axios.get("http://localhost:3000/api/engineers", {
+          axios.get("https://erms-be.vercel.app/api/engineers", {
             headers: { Authorization: token },
           }),
-          axios.get("http://localhost:3000/api/projects", {
+          axios.get("https://erms-be.vercel.app/api/projects", {
             headers: { Authorization: token },
           }),
         ]);
@@ -48,6 +48,19 @@ const CreateAssignment = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (createStatus === "success") {
+      setFormData({
+        engineerId: "",
+        projectId: "",
+        allocationPercentage: "",
+        startDate: "",
+        endDate: "",
+        role: "Developer",
+      });
+    }
+  }, [createStatus]);
 
   useEffect(() => {
     dispatch(fetchAssignment());
@@ -65,14 +78,6 @@ const CreateAssignment = () => {
     e.preventDefault();
     try {
       dispatch(assignmentCreate(formData));
-      setFormData({
-        engineerId: "",
-        projectId: "",
-        allocationPercentage: "",
-        startDate: "",
-        endDate: "",
-        role: "Developer",
-      });
     } catch (err) {
       console.error("Error creating assignment:", err);
       alert("Error creating assignment");

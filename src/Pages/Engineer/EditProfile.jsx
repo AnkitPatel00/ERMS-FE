@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateUser } from "../../features/userSlice"; // Uncomment when update thunk is ready
 import { useNavigate } from "react-router-dom";
@@ -34,8 +34,13 @@ const EditProfile = () => {
       id: user._id,
     };
     dispatch(updateUser(updatedData));
-    navigate("/profile");
   };
+
+  useEffect(() => {
+    if (updateStatus === "success") {
+      navigate("/profile");
+    }
+  }, [updateStatus]);
 
   return (
     <div className="container py-5">

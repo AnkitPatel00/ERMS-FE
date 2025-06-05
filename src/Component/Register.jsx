@@ -10,12 +10,6 @@ function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (regsiterStatus === "success") {
-      navigate("/login");
-    }
-  }, [regsiterStatus]);
-
   const formInitialState = {
     name: "",
     email: "",
@@ -48,6 +42,13 @@ function Register() {
   };
 
   const isEngineer = formData.role === "engineer";
+
+  useEffect(() => {
+    if (regsiterStatus === "success") {
+      setFormData(formInitialState);
+      navigate("/login");
+    }
+  }, [regsiterStatus]);
 
   return (
     <>

@@ -32,6 +32,12 @@ function Login() {
     dispatch(resetRegisterState());
   }, []);
 
+  useEffect(() => {
+    if (status === "success") {
+      setFormData(formIntialState);
+    }
+  }, [status]);
+
   return (
     <>
       <Header />

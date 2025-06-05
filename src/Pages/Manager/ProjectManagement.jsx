@@ -41,7 +41,6 @@ const ProjectManagement = () => {
         .map((s) => s.trim());
       const dataToSend = { ...formData, requiredSkills: skillsArray };
       dispatch(projectCreate(dataToSend));
-      setFormData(initialData);
     } catch (error) {
       alert("Error creating project.");
     }
@@ -50,6 +49,12 @@ const ProjectManagement = () => {
   useEffect(() => {
     dispatch(fetchProject());
   }, []);
+
+  useEffect(() => {
+    if (createStatus === "success") {
+      setFormData(initialData);
+    }
+  }, [createStatus]);
 
   if (fetchStatus === "loading") {
     return <Loading />;
